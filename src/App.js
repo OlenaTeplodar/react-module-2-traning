@@ -1,6 +1,7 @@
+
 import React from "react";
-// import Counter from "components/Counter/Counter";
-import Dropdown from "components/Dropdown/Dropdown";
+import Counter from "components/Counter/Counter";
+// import Dropdown from "components/Dropdown/Dropdown";
 
 // const colorPickerOptions = [
 //   { label: 'red', color: '#F44336' },
@@ -11,13 +12,15 @@ import Dropdown from "components/Dropdown/Dropdown";
 //   { label: 'indigo', color: '#3F51B5' },
 // ];
 
-export const App = () => {
+
+const App = () => {
   <>
     <h1>Состояние компонента</h1>
     
-    {/* <Counter initialValue={10} /> */}
+    <Counter initialValue={10} />
 
-    <Dropdown />
+    {/* <Dropdown /> */}
   </>
 }
 
+export default App;
