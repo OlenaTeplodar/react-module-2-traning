@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Counter.css';
 import Controls from './Controls';
 import Value from './Value';
