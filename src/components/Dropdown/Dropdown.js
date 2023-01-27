@@ -47,7 +47,7 @@ class Dropdown extends Component {
             {this.state.visible && (
               <div className="Dropdown__menu">Выпадающее меню</div>
             )}{' '}
-            // рендер за умовою
+            {/* // рендер за умовою */}
           </div>
         );
     }
