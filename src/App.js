@@ -1,7 +1,10 @@
 
-import React from "react";
-import Counter from "components/Counter/Counter";
-// import Dropdown from "components/Dropdown/Dropdown";
+import React, { Component } from "react";
+// import Counter from "components/Counter";
+// import Dropdown from "components/Dropdown";
+// import ColorPicker from "components/ColorPicker";
+import TodoList from "components/TodoList";
+import initialtodos from './todos.json';
 
 // const colorPickerOptions = [
 //   { label: 'red', color: '#F44336' },
@@ -13,14 +16,49 @@ import Counter from "components/Counter/Counter";
 // ];
 
 
-const App = () => {
-  <>
-    <h1>Состояние компонента</h1>
+// const App = () => {
+//   <>
+//     <h1>Состояние компонента</h1>
     
-    <Counter initialValue={10} />
+// <ColorPicker options={colorPickerOptions} />
 
-    {/* <Dropdown /> */}
+//     <Counter initialValue={10} />
+
+//     <Dropdown />
+//   </>
+// }
+class App extends Component {
+  state = {
+    todos: initialtodos
+  };
+  
+  deleteTodo = (todoId) => {
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(todo => todo.id !== todoId),
+    }));
+     //повератємо до масиву тільки ті елементи, в яких id не співпадають. якщо співпав - видаляємо
+  }
+
+  render() {
+    const { todos } = this.state;
+    const totalTodoCount = todos.length;
+    const completedTodoCount = todos.reduce((total, todo) => ( todo.completed ? total + 1 : total ), 0,);
+
+    return (
+       <>
+        <h1>Состояние компонента</h1>
+        <div>
+          <p>Общее количество: {totalTodoCount}</p>
+          <p>Количество выполненных: {completedTodoCount}</p>
+    </div>
+      
+      <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
   </>
+    );
+  }
 }
+
+
+
 
 export default App;

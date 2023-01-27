@@ -6,26 +6,48 @@ class Dropdown extends Component {
         visible: false,
     };
 
-    show = () => {
-        this.setState({ visible: true });
-    };
+    toggle = () => {
+        this.setState(prevState => ({ visible: !prevState.visible, }));
+    };  // буде одна функція та одна кнопка
+    // show = () => {
+    //     this.setState({ visible: true });
+    // };
 
-    hide = () => {
-        this.setState({ visible: false });
-    }
+    // hide = () => {
+    //     this.setState({ visible: false });
+    // }
 
     render() {
         return (
           <div className="Dropdown">
-            <button type="button" className="Dropdown__toggle" onClick={this.show}>
+            <button
+              type="button"
+              className="Dropdown__toggle"
+              onClick={this.toggle}
+            >
+                    {/* TOGGLE */}
+                    {this.state.visible ? 'Скрыть' : 'Показать'}
+                    {/* // рендер тексту кнопки за умовою */}
+            </button>
+            {/* <button
+              type="button"
+              className="Dropdown__toggle"
+              onClick={this.show}
+            >
               Показать
             </button>
 
-            <button type="button" className="Dropdown__toggle" onClick={this.hide}>
+            <button
+              type="button"
+              className="Dropdown__toggle"
+              onClick={this.hide}
+            >
               Скрыть
-            </button>
-
-            <div className="Dropdown__menu">Выпадающее меню</div>
+            </button> */}
+            {this.state.visible && (
+              <div className="Dropdown__menu">Выпадающее меню</div>
+            )}{' '}
+            // рендер за умовою
           </div>
         );
     }
